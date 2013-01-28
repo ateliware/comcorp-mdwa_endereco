@@ -6,13 +6,11 @@
 module A
   class Endereco < ActiveRecord::Base
 
-      attr_accessible :rua, :numero, :cep, :complemento, :bairro
+      attr_accessible :rua, :numero, :cep, :complemento, :bairro, :cidade_id
+
+      belongs_to :cidade, :class_name => 'A::Cidade'
       
-      validates :rua, :cep, :bairro, :presence => true
-      
-      def cidade
-        self.bairro.cidade unless bairro.nil?
-      end
+      validates :rua, :cep, :bairro, :cidade_id, :presence => true
       
       def nome_completo
         nome = []

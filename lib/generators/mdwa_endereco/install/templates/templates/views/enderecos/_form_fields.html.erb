@@ -3,51 +3,52 @@
 @model = @entity.generator_model 
 -%>
 <div class="endereco">
+
   <div class="field">
-     	<%%= f.label :cep, t('enderecos.edit_cep') %> 
-     	<%%= f.text_field :cep, :onkeypress => 'mascara(this, checaCEP)', :maxlength => 9, :class => :endereco_cep_ajax %>
+      <%= f.label :cep, t('enderecos.edit_cep') %> 
+      <%= f.text_field :cep, :onkeypress => 'mascara(this, checaCEP)', :maxlength => 9, :class => :endereco_cep_ajax %>
   </div>
   <div class="field">
-     	<%%= f.label :rua, t( 'enderecos.edit_rua') %> 
-     	<%%= f.text_field :rua %>
+      <%= f.label :rua, t( 'enderecos.edit_rua') %> 
+      <%= f.text_field :rua %>
   </div>
   <div class="field">
-     	<%%= f.label :numero, t( 'enderecos.edit_numero') %> 
-     	<%%= f.text_field :numero %>
+      <%= f.label :numero, t( 'enderecos.edit_numero') %> 
+      <%= f.text_field :numero %>
   </div>
   <div class="field">
-     	<%%= f.label :complemento, t( 'enderecos.edit_complemento') %> 
-     	<%%= f.text_field :complemento %>
+      <%= f.label :complemento, t( 'enderecos.edit_complemento') %> 
+      <%= f.text_field :complemento %>
   </div>
 
   <div class="field">
-    <%% 
-  	if f.object.new_record? 
+    <% 
+    if f.object.new_record? 
         estado_selecionado = '' 
       else 
         estado_selecionado = f.object.cidade.estado.id 
       end
     %>
-    <%%= label_tag :estado, t('enderecos.edit_estado') %>
-    <%%= select_tag 'estado_id', options_for_select( A::Estado.order('nome ASC').collect{ |e| [e.nome, e.id] }, estado_selecionado ), :prompt => t( 'enderecos.edit_combo_estados' ) %>
+    <%= label_tag :estado, t('enderecos.edit_estado') %>
+    <%= select_tag 'estado_id', options_for_select( A::Estado.order('nome ASC').collect{ |e| [e.nome, e.id] }, estado_selecionado ), :prompt => t( 'enderecos.edit_combo_estados' ) %>
   </div>
 
   <div class="field">
-    <%%= label_tag :cidade_id, t('enderecos.edit_cidade') %>
+    <%= label_tag :cidade_id, t('enderecos.edit_cidade') %>
     <div id="endereco_cidade">
-      <%% if f.object.new_record? %>
-        <%%= select_tag 'cidade_id', options_for_select([]), :prompt => t( 'enderecos.edit_combo_cidade_inicial' ) %>
-      <%% else %>
-        <%%= select_tag 'cidade_id', options_for_select( A::Cidade.where( :estado_id => f.object.bairro.cidade.estado.id ).collect{ |c| [c.nome, c.id] }, f.object.bairro.cidade.id ), :prompt => t( 'enderecos.edit_combo_cidade' ) %>
-      <%% end %>
+      <% if f.object.new_record? %>
+        <%= select_tag 'cidade_id', options_for_select([]), :prompt => t( 'enderecos.edit_combo_cidade_inicial' ) %>
+      <% else %>
+        <%= select_tag 'cidade_id', options_for_select( A::Cidade.where( :estado_id => f.object.cidade.estado.id ).collect{ |c| [c.nome, c.id] }, f.object.cidade.id ), :prompt => t( 'enderecos.edit_combo_cidade' ) %>
+      <% end %>
     </div>
   </div>
 
   <div class="field">
-  	<%%= f.label :bairro, t( 'enderecos.edit_bairro' ) %>
-    <%%= f.text_field :bairro %>
+    <%= f.label :bairro, t( 'enderecos.edit_bairro' ) %>
+    <%= f.text_field :bairro %>
   </div>
 
-  <%%= hidden_field_tag :endereco_tipo, tipo %>
+  <%= hidden_field_tag :endereco_tipo, tipo %>
 
 </div>

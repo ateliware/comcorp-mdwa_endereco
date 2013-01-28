@@ -29,7 +29,7 @@
 		    <%% if f.object.new_record? %>
 		      <%%= select_tag 'cidade_id', options_for_select([]), :prompt => t( 'enderecos.edit_combo_cidade_inicial' ) %>
 		    <%% else %>
-		      <%%= select_tag 'cidade_id', options_for_select( A::Cidade.where( :estado_id => f.object.bairro.cidade.estado.id ).collect{ |c| [c.nome, c.id] }, f.object.bairro.cidade.id ), :prompt => t( 'enderecos.edit_combo_cidade' ) %>
+		      <%%= select_tag 'cidade_id', options_for_select( A::Cidade.where( :estado_id => f.object.cidade.estado.id ).collect{ |c| [c.nome, c.id] }, f.object.cidade.id ), :prompt => t( 'enderecos.edit_combo_cidade' ) %>
 		    <%% end %>
 		  </div>
 		</div>		
