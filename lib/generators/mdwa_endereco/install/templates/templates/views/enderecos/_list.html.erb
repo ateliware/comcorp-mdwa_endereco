@@ -1,4 +1,7 @@
-===entity_code===
+<%- 
+@entity = MDWA::DSL.entity('Endereco') 
+@model = @entity.generator_model 
+-%>
 <table class="list">
   <thead>
       <th class="list_show"><%%= t 'system.index_id' %></th>

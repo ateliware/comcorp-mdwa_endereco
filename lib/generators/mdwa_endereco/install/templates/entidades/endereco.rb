@@ -17,6 +17,9 @@ MDWA::DSL.entities.register "Endereco" do |e|
     a.type = 'many_to_one'
     a.destination = 'Cidade'
   end
+
+  e.collection_action :atualizar_dados_cep, :post, [:ajax]
+  e.collection_action :gerar_combobx_cidade, :post, [:ajax]
   
 end
 

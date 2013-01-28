@@ -1,3 +1,7 @@
+<%- 
+@entity = MDWA::DSL.entity('Estado') 
+@model = @entity.generator_model 
+-%>
 <%% if @estado.errors.any? %>
 	$("#mdwa_error").html("<%%= escape_javascript( render '/template/mdwa/crud_error', :object => @estado )%>");
 <%% else %>

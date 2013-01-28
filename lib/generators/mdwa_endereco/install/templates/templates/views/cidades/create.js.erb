@@ -1,4 +1,7 @@
-===entity_code===
+<%- 
+@entity = MDWA::DSL.entity('Cidade') 
+@model = @entity.generator_model 
+-%>
 <%% if @cidade.errors.any? %>
 	$("#mdwa_error").html("<%%= escape_javascript( render '/template/mdwa/crud_error', :object => @cidade )%>");
 <%% else %>

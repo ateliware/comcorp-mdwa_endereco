@@ -1,4 +1,7 @@
-===entity_code===
+<%- 
+@entity = MDWA::DSL.entity('Cidade') 
+@model = @entity.generator_model 
+-%>
 <div id="cidades_edit" class="mdwa_edit">
 	<div class="page_header">
 		<h1><%%= t('cidades.edit_title') %></h1>

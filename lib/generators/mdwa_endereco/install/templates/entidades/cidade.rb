@@ -7,8 +7,10 @@ MDWA::DSL.entities.register "Cidade" do |e|
   e.scaffold_name = 'a/cidade'
   e.model_name = 'a/cidade'
   
-
   e.attribute 'nome', 'string'
+  e.attribute 'latitude', 'string'
+  e.attribute 'longitude', 'string'
+  e.attribute 'populacao', 'integer'
   
   e.association do |a|
     a.type = 'one_to_many'

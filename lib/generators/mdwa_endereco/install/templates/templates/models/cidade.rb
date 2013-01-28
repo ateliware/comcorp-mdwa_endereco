@@ -1,12 +1,14 @@
 # -*- encoding : utf-8 -*-
-===entity_code===
+<%- 
+@entity = MDWA::DSL.entity('Cidade') 
+@model = @entity.generator_model 
+-%>
 module A
 	class Cidade < ActiveRecord::Base
 
 	    attr_accessible :nome, :latitude, :longitude, :populacao, :estado, :estado_id
 
 	    belongs_to :estado, :class_name => 'A::Estado'
-	    has_many :bairros, :class_name => 'A::Bairro'
 	    
 	    validates :nome, :estado_id, :presence => true
 	    

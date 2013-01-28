@@ -1,1 +1,5 @@
+<%- 
+@entity = MDWA::DSL.entity('Estado') 
+@model = @entity.generator_model 
+-%>
 $("#estados_list").html("<%%= escape_javascript( render 'list' )%>");

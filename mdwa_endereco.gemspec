@@ -16,6 +16,7 @@ Gem::Specification.new do |gem|
   
   gem.add_dependency 'rails', '>= 3.2.11'
   gem.add_dependency 'mdd', '>= 3.1.0'
+  gem.add_dependency 'brcep'
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

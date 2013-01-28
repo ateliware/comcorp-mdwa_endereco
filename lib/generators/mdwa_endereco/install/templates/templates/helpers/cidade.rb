@@ -1,3 +1,7 @@
-===entity_code===
+# -*- encoding : utf-8 -*-
+<%- 
+@entity = MDWA::DSL.entity('Cidade') 
+@model = @entity.generator_model 
+-%>
 module A::Cidade
 end

@@ -1,5 +1,8 @@
 # -*- encoding : utf-8 -*-
-===entity_code===
+<%- 
+@entity = MDWA::DSL.entity('Endereco') 
+@model = @entity.generator_model 
+-%>
 class A::EnderecosController < A::BackendController
 
   load_and_authorize_resource :class => "A::Endereco"

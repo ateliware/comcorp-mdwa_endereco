@@ -1,11 +1,14 @@
 # -*- encoding : utf-8 -*-
-===entity_code===
+<%- 
+@entity = MDWA::DSL.entity('Endereco') 
+@model = @entity.generator_model 
+-%>
 module A
   class Endereco < ActiveRecord::Base
 
       attr_accessible :rua, :numero, :cep, :complemento, :bairro
       
-      validates :rua, :cep, :bairro_id, :presence => true
+      validates :rua, :cep, :bairro, :presence => true
       
       def cidade
         self.bairro.cidade unless bairro.nil?

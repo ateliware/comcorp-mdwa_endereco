@@ -1,3 +1,7 @@
+<%- 
+@entity = MDWA::DSL.entity('Estado') 
+@model = @entity.generator_model 
+-%>
 <div id="estados_show" class="mdwa_show">
 	<div class="page_header">
 		<h1><%%= t('estados.show_title') %></h1>

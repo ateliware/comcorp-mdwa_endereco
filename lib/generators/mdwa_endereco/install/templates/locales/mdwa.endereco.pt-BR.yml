@@ -1,0 +1,84 @@
+pt-BR:
+  cidades:
+    create_success: "Cidade criado com sucesso."
+    update_success: "Cidade salvo com sucesso."
+    destroy_success: "Cidade removido com sucesso."
+    index_title: "Cidades"
+    show_title: "Cidade"
+    new_title: "Novo Cidade"
+    edit_title: "Editar Cidade"
+    index_nome: "Nome"
+    show_nome: "Nome"
+    index_latitude: "Latitude"
+    show_latitude: "Latitude"
+    index_longitude: "Longitude"
+    show_longitude: "Longitude"
+    index_populacao: "Populacao"
+    show_populacao: "Populacao"
+    index_id: "Id"
+    show_id: "Id"
+    index_created_at: 'Data de cadastro'
+    show_created_at: 'Data de cadastro'
+    index_updated_at: "Updated at"
+    show_updated_at: "Updated at"
+    index_estado: "Estado"
+    show_estado: "Estado"
+    index_bairro: "Bairros"
+    show_bairro: "Bairros"
+    
+  estados:
+    create_success: "Estado criado com sucesso."
+    update_success: "Estado salvo com sucesso."
+    destroy_success: "Estado removido com sucesso."
+    index_title: "Estados"
+    show_title: "Estado"
+    new_title: "Novo Estado"
+    edit_title: "Editar Estado"
+    index_nome: "Nome"
+    show_nome: "Nome"
+    index_acronimo: "Acronimo"
+    show_acronimo: "Acronimo"
+    index_id: "Id"
+    show_id: "Id"
+    index_created_at: 'Data de cadastro'
+    show_created_at: 'Data de cadastro'
+    index_updated_at: "Updated at"
+    show_updated_at: "Updated at"
+    index_pais: "Pais"
+    show_pais: "Pais"
+    index_cidade: "Cidades"
+    show_cidade: "Cidades"
+
+  enderecos:
+    create_success: "Endereco criado com sucesso."
+    update_success: "Endereco salvo com sucesso."
+    destroy_success: "Endereco removido com sucesso."
+    index_title: "Enderecos"
+    show_title: "Endereco"
+    new_title: "Novo Endereco"
+    edit_title: "Editar Endereco"
+    index_rua: "Rua"
+    show_rua: "Rua"
+    index_numero: "Número"
+    show_numero: "Número"
+    edit_numero: "Número"
+    index_cep: "CEP"
+    show_cep: "CEP"
+    edit_cep: 'CEP'
+    edit_combo_estados: '-- Selecione um estado --'
+    edit_combo_cidade_inicial: "-- Selecione primeiro um estado --"
+    edit_combo_cidade: '-- Selecione uma cidade --'
+    edit_numero: "Número"
+    edit_bairro: "Bairro"
+    edit_combo_bairros_inicial: '-- Selecione primeiro uma cidade --'
+    edit_combo_bairros: '-- Selecione um bairro --'
+    index_complemento: "Complemento"
+    show_complemento: "Complemento"
+    index_id: "Id"
+    show_id: "Id"
+    index_created_at: 'Data de cadastro'
+    show_created_at: 'Data de cadastro'
+    index_updated_at: "Updated at"
+    show_updated_at: "Updated at"
+    index_bairro: "Bairro"
+    show_bairro: "Bairro"

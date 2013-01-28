@@ -1,4 +1,7 @@
-===entity_code===
+<%- 
+@entity = MDWA::DSL.entity('Endereco') 
+@model = @entity.generator_model 
+-%>
 <div class="field">
    	<%%= f.label :cep, t('enderecos.edit_cep') %> 
    	<%%= f.text_field :cep, :onkeypress => 'mascara(this, checaCEP)', :maxlength => 9, :class => :endereco_cep_ajax %>

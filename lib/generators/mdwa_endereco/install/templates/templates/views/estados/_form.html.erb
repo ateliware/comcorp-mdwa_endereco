@@ -1,3 +1,7 @@
+<%- 
+@entity = MDWA::DSL.entity('Estado') 
+@model = @entity.generator_model 
+-%>
 <%%= nested_form_for(@estado, :remote => true, :html => {:class => :mdwa_ajax ,:multipart => true}) do |f| %>
 
 	<div id="mdwa_error">

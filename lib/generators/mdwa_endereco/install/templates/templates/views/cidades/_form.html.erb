@@ -1,4 +1,7 @@
-===entity_code===
+<%- 
+@entity = MDWA::DSL.entity('Cidade') 
+@model = @entity.generator_model 
+-%>
 <%%= form_for(@cidade, :remote => true, :html => {:class => :mdwa_ajax}) do |f| %>
 
 	<div id="mdwa_error">

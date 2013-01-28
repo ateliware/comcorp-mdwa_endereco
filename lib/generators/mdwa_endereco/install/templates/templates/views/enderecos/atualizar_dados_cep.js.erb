@@ -1,4 +1,7 @@
-===entity_code===
+<%- 
+@entity = MDWA::DSL.entity('Endereco') 
+@model = @entity.generator_model 
+-%>
 <%% unless @endereco.blank? %>
   $("#<%%= @tipo %>_endereco_attributes_rua").val( "<%%= @endereco[0] + " " + @endereco[1] %>" );
   $("#estado_id").val( "<%%= @estado.id %>" );
@@ -9,7 +12,6 @@
     data: {
       estado: '<%%= @estado.id %>',
       cidade: '<%%= @cidade.id %>',
-      bairro: '<%%= @bairro.id unless @bairro.nil? %>',
       endereco_tipo: '<%%= @tipo %>'
     }
   });

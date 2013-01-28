@@ -1,4 +1,7 @@
-===entity_code===
+<%- 
+@entity = MDWA::DSL.entity('Cidade') 
+@model = @entity.generator_model 
+-%>
 <div class="field">
    	<%%= f.label :nome %> 
    	<%%= f.text_field :nome %>

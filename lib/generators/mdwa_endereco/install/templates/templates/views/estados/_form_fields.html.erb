@@ -1,3 +1,7 @@
+<%- 
+@entity = MDWA::DSL.entity('Estado') 
+@model = @entity.generator_model 
+-%>
 <div class="field">
    	<%%= f.label :nome %> 
    	<%%= f.text_field :nome %>
@@ -14,10 +18,3 @@
 		  options_for_select( A::Pais.order('nome ASC').collect{ |c| [c.nome, c.id] }, f.object.pais_id ), 
 			:prompt => '-- Select --' %>
 </div>
-
-
-
-
-
-
-

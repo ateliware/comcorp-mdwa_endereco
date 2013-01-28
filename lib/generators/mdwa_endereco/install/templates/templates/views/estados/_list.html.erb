@@ -1,3 +1,7 @@
+<%- 
+@entity = MDWA::DSL.entity('Estado') 
+@model = @entity.generator_model 
+-%>
 <table class="list">
   <thead>
       <th class="list_show"><%%= t 'system.index_id' %></th>
