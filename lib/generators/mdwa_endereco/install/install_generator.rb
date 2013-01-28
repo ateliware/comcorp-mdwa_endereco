@@ -10,6 +10,9 @@ module MdwaEndereco
 
 		def mdwa
 
+			# Dependência da gem brcep para geolocalização
+			gem 'brcep'
+
 			# Copia o requisito
 			copy_file 'requisitos/armazenar_enderecos.rb', MDWA::DSL::REQUIREMENTS_PATH + 'armazenar_enderecos.rb'
 

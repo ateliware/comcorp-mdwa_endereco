@@ -3,5 +3,5 @@
 @entity = MDWA::DSL.entity('Estado') 
 @model = @entity.generator_model 
 -%>
-module A::Estado
+module A::EstadosHelper
 end

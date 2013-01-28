@@ -3,5 +3,5 @@
 @entity = MDWA::DSL.entity('Cidade') 
 @model = @entity.generator_model 
 -%>
-module A::Cidade
+module A::CidadesHelper
 end

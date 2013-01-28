@@ -19,7 +19,7 @@ MDWA::DSL.entities.register "Endereco" do |e|
   end
 
   e.collection_action :atualizar_dados_cep, :post, [:ajax]
-  e.collection_action :gerar_combobx_cidade, :post, [:ajax]
+  e.collection_action :gerar_combobox_cidade, :post, [:ajax]
   
 end
 

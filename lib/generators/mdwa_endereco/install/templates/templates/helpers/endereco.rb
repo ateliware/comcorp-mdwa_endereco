@@ -3,5 +3,5 @@
 @entity = MDWA::DSL.entity('Endereco') 
 @model = @entity.generator_model 
 -%>
-module A::Endereco
+module A::EnderecosHelper
 end
