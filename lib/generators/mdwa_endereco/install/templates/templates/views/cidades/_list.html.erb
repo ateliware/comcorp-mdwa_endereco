@@ -1,0 +1,32 @@
+===entity_code===
+<table class="list">
+  <thead>
+      <th class="list_show"><%%= t 'system.index_id' %></th>
+      <th class="list_edit"><%%= t 'system.index_edit' %></th>
+      <th><%%= t 'cidades.index_nome' %></th>
+      <th><%%= t 'cidades.index_estado' %></th>
+      <th class="list_remove"><%%= t 'system.index_remove' %></th>
+  </thead>
+
+<%% @cidades.each do |cidade| %>
+  <tr class="<%%= cycle 'odd_line', 'even_line' %>" >
+    <td>
+		<%%= link_to cidade.id, a_cidade_path(cidade) , :class => 'lightbox various fancybox.ajax' %>
+	</td>
+  	<td>
+		<%%= link_to t('system.index_edit_label'), edit_a_cidade_path(cidade) , :class => 'lightbox various fancybox.ajax' %>
+	</td>
+	<td>
+		<%%= cidade.nome %>
+	</td>	
+    <td>
+        <%%= cidade.estado.nome unless cidade.estado.nil? %>
+    </td>
+    <td>
+		<%%= link_to t('system.index_remove_label'), cidade, :method => :delete, :remote => true, :data => {:confirm => t('system.index_confirm_deletion')} %>
+	</td>
+  </tr>
+<%% end %>
+</table>
+
+<%%= pagination_footer @cidades %>

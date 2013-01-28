@@ -1,0 +1,18 @@
+===entity_code===
+<%% if params[:somente_cidade] == '1' %>
+	$('#endereco_cidade').html("<%%= j select_tag( "#{params[:endereco_tipo]}[cidade_id]", options_for_select(@cidades.collect{ |c| [c.nome, c.id] }, params[:cidade] ), {:prompt => '-- Selecione uma cidade --'} ) %>");
+<%% else %>
+	$('#endereco_cidade').html("<%%= j select_tag( :cidade_id, options_for_select(@cidades.collect{ |c| [c.nome, c.id] }, params[:cidade] ), {:prompt => '-- Selecione uma cidade --'} ) %>");
+<%% end %>
+
+// dispara o carregamento dos bairros, utilizando o bairro selecionado como parametro
+$.ajax({
+	url: '/a/enderecos/gerar_combobox_bairro',
+	type: 'POST',
+	dataType: 'script',
+	data: {
+		'cidade' : $('#cidade_id').val(), 
+		'bairro': '<%%= params[:bairro] %>',
+		'endereco_tipo': $("#endereco_tipo").val(),
+	}
+ });

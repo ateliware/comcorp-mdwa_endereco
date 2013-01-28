@@ -1,0 +1,32 @@
+===entity_code===
+<div class="field">
+   	<%%= f.label :nome %> 
+   	<%%= f.text_field :nome %>
+</div>
+<div class="field">
+   	<%%= f.label :latitude %> 
+   	<%%= f.text_field :latitude %>
+</div>
+<div class="field">
+   	<%%= f.label :longitude %> 
+   	<%%= f.text_field :longitude %>
+</div>
+<div class="field">
+   	<%%= f.label :populacao %> 
+   	<%%= f.text_field :populacao %>
+</div>
+
+
+<div class="field">
+	<%%= f.label :estado_id %> 
+	<%%= f.select :estado_id, 
+		  options_for_select( A::Estado.order('nome ASC').collect{ |c| [c.nome, c.id] }, f.object.estado_id ), 
+			:prompt => '-- Select --' %>
+</div>
+
+
+
+
+
+
+

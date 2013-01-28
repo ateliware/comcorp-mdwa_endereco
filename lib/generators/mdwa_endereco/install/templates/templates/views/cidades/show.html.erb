@@ -1,0 +1,43 @@
+===entity_code===
+<div id="cidades_show" class="mdwa_show">
+	<div class="page_header">
+		<h1><%%= t('cidades.show_title') %></h1>
+	</div>
+
+	<div class="inside">
+		<div class="field">
+			<label><%%= t 'cidades.show_nome' %></label>
+			<span><%%= @cidade.nome %></span>
+		</div>
+		<div class="field">
+			<label><%%= t 'cidades.show_latitude' %></label>
+			<span><%%= @cidade.latitude %></span>
+		</div>
+		<div class="field">
+			<label><%%= t 'cidades.show_longitude' %></label>
+			<span><%%= @cidade.longitude %></span>
+		</div>
+		<div class="field">
+			<label><%%= t 'cidades.show_populacao' %></label>
+			<span><%%= @cidade.populacao %></span>
+		</div>
+		<div class="field">
+			<label><%%= t 'cidades.show_estado' %></label>
+			<span>
+		    	<%%= @cidade.estado.nome unless @cidade.estado.nil? %>
+		    
+			</span>
+		</div>
+		<div class="field">
+			<label><%%= t 'cidades.show_bairro' %></label>
+			<span>
+		        <ul>
+		    	<%% @cidade.bairros.each do |bairro| %>
+		   	    	<li><%%= bairro.nome %> </li>
+		    	<%% end %>
+		        </ul>
+		    
+			</span>
+		</div>
+	</div>
+</div>

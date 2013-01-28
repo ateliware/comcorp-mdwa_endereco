@@ -1,0 +1,34 @@
+<div id="estados_show" class="mdwa_show">
+	<div class="page_header">
+		<h1><%%= t('estados.show_title') %></h1>
+	</div>
+
+	<div class="inside">
+		<div class="field">
+			<label><%%= t 'estados.show_nome' %></label>
+			<span><%%= @estado.nome %></span>
+		</div>
+		<div class="field">
+			<label><%%= t 'estados.show_acronimo' %></label>
+			<span><%%= @estado.acronimo %></span>
+		</div>
+		<div class="field">
+			<label><%%= t 'estados.show_pais' %></label>
+			<span>
+		    	<%%= @estado.pais.nome unless @estado.pais.nil? %>
+		    
+			</span>
+		</div>
+		<div class="field">
+			<label><%%= t 'estados.show_cidade' %></label>
+			<span>
+		        <ul>
+		    	<%% @estado.cidades.each do |cidade| %>
+		   	    	<li><%%= cidade.nome %> </li>
+		    	<%% end %>
+		        </ul>
+		    
+			</span>
+		</div>
+	</div>
+</div>

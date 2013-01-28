@@ -1,0 +1,13 @@
+===entity_code===
+<%% if @cidade.errors.any? %>
+	$("#mdwa_error").html("<%%= escape_javascript( render '/template/mdwa/crud_error', :object => @cidade )%>");
+<%% else %>
+	if( $('#cidades_list').length > 0 ) {
+		$.fancybox.close(true);
+		$("#cidades_list").html("<%%= j( render 'list' )%>");
+	}
+	else if( $("#edit_cidades").length > 0 ) {
+		$("#edit_cidades .inside").html("<%%= j( render 'form' )%>");
+	}
+	$('body').append("<%%= j( render '/template/mdwa/notice', :notice => @system_notice )%>");
+<%% end %>

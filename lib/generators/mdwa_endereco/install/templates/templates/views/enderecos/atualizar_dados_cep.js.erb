@@ -1,0 +1,17 @@
+===entity_code===
+<%% unless @endereco.blank? %>
+  $("#<%%= @tipo %>_endereco_attributes_rua").val( "<%%= @endereco[0] + " " + @endereco[1] %>" );
+  $("#estado_id").val( "<%%= @estado.id %>" );
+  $.ajax({
+    url: '/a/enderecos/gerar_combobox_cidade',
+    type: 'POST',
+    dataType: 'script',
+    data: {
+      estado: '<%%= @estado.id %>',
+      cidade: '<%%= @cidade.id %>',
+      bairro: '<%%= @bairro.id unless @bairro.nil? %>',
+      endereco_tipo: '<%%= @tipo %>'
+    }
+  });
+<%% end %>
+$("div.endereco img").remove();

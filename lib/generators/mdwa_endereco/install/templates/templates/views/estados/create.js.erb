@@ -1,0 +1,7 @@
+<%% if @estado.errors.any? %>
+	$("#mdwa_error").html("<%%= escape_javascript( render '/template/mdwa/crud_error', :object => @estado )%>");
+<%% else %>
+	$.fancybox.close(true);
+	$("#estados_list").html("<%%= j( render 'list' )%>");
+	$('body').append("<%%= j( render '/template/mdwa/notice', :notice => @system_notice )%>");
+<%% end %>

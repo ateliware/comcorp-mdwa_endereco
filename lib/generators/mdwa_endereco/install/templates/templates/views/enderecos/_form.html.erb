@@ -1,0 +1,19 @@
+===entity_code===
+<%%= form_for(@endereco, :remote => true, :html => {:class => :mdwa_ajax}) do |f| %>
+
+	<div id="mdwa_error">
+	   	<%%= render '/template/mdwa/crud_error', :object => @endereco %>
+	</div>
+	
+	<div class="yui3-g">
+		<div class="yui3-u">
+			<%%= render 'form_fields', :f => f %>
+  	  	</div>
+	</div>
+
+	<div class="actions">
+		<%%= link_to t('system.cancel_button'), '#', :class => :cancel %> 
+	    <%%= f.submit :class => :button %>
+	</div>
+
+<%% end %>

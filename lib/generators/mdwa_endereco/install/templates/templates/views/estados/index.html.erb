@@ -1,0 +1,14 @@
+<div id="estados_index" class="mdwa_index">
+	<div class="page_header">
+		<h1><%%= t 'estados.index_title' %></h1>
+		<div class="page_header_right_tab">
+			<%%= link_to t('system.add_by_ajax', :name => 'Estado'), new_a_estado_path, :class => 'lightbox various fancybox.ajax' %>
+		</div>
+	</div>
+
+	<div class="inside">
+		<div id="estados_list">
+			<%%= render 'list' %>
+		</div>
+	</div>
+</div>
