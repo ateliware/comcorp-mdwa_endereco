@@ -1,4 +1,3 @@
-en:
   cidades:
     create_success: "Cidade created."
     update_success: "Cidade updated."
@@ -73,3 +72,4 @@ en:
     show_updated_at: "Updated at"
     index_bairro: "Bairro"
     show_bairro: "Bairro"
+

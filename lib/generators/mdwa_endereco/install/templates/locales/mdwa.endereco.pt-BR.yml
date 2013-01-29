@@ -1,4 +1,3 @@
-pt-BR:
   cidades:
     create_success: "Cidade criado com sucesso."
     update_success: "Cidade salvo com sucesso."
@@ -82,3 +81,4 @@ pt-BR:
     show_updated_at: "Updated at"
     index_bairro: "Bairro"
     show_bairro: "Bairro"
+
