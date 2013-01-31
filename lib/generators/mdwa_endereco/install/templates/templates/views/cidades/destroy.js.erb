@@ -2,5 +2,5 @@
 @entity = MDWA::DSL.entity('Cidade') 
 @model = @entity.generator_model 
 -%>
-$("#cidades_list").html("<%%= j( render 'list' )%>");
-$('body').append("<%%= escape_javascript( render '/template/mdwa/notice', :notice => @system_notice )%>");
+$('#<%= @model.plural_name %>_filter_form').submit();
+$('body').append("<%%= j( render '/template/mdwa/notice', :notice => @system_notice )%>");

@@ -12,6 +12,7 @@ module MdwaEndereco
 
 			# Dependência da gem brcep para geolocalização
 			gem 'brcep'
+			run 'bundle install'
 
 			# Copia o requisito
 			copy_file 'requisitos/armazenar_enderecos.rb', MDWA::DSL::REQUIREMENTS_PATH + 'armazenar_enderecos.rb'
@@ -55,18 +56,14 @@ module MdwaEndereco
 
 		def locales
 
-			create_file 'config/locales/mdwa.specific.en.yml', "en:\n" unless File.exists?('config/locales/mdwa.specific.en.yml')
-			create_file 'config/locales/mdwa.specific.pt-BR.yml', "pt-BR:\n" unless File.exists?('config/locales/mdwa.specific.pt-BR.yml')
+			copy_file 'locales/mdwa.endereco.en.yml', 'config/locales/mdwa.endereco.en.yml' unless File.exists?(Rails.root + 'config/locales/mdwa.endereco.en.yml')
+			copy_file 'locales/mdwa.endereco.pt-BR.yml', 'config/locales/mdwa.endereco.pt-BR.yml' unless File.exists?(Rails.root + 'config/locales/mdwa.endereco.pt-BR.yml')
 
-			en = File.read( File.join(File.expand_path("../templates", __FILE__), "locales", "mdwa.endereco.en.yml") )
-			pt_br = File.read File.join(File.expand_path("../templates", __FILE__), "locales", "mdwa.endereco.pt-BR.yml")
-			append_file 'config/locales/mdwa.specific.en.yml', en, :after => "en:\n"
-			append_file 'config/locales/mdwa.specific.pt-BR.yml', pt_br, :after => "pt-BR:\n"
 		end
 
 		def rodar_transformacao
 			if yes? "Deseja rodar a transformação dos templates de endereço, cidade e estado?"
-				generate "mdwa:transform Estado Cidade Endereco"
+				generate "mdwa:transform Estado Cidade Endereco --skip-locales"
 			end
 		end
 

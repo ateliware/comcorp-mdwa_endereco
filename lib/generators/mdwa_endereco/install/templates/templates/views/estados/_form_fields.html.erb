@@ -2,19 +2,53 @@
 @entity = MDWA::DSL.entity('Estado') 
 @model = @entity.generator_model 
 -%>
+<%- @model.attributes.select{|a| !['id', 'created_at', 'updated_at'].include?(a.name)}.each do |attr| -%>
 <div class="field">
-   	<%%= f.label :nome %> 
-   	<%%= f.text_field :nome %>
+   	<%%= f.label :<%= attr.name %>, t('<%= @model.plural_name %>.edit.<%= attr.name %>') %> 
+	<%- if attr.type.to_sym == :file -%>
+	<%% unless @<%= @model.singular_name %>.new_record? %>
+		<span><%%= link_to image_tag(file_icon_path(@<%= @model.singular_name %>.<%= attr.name %>_file_name)), @<%= @model.singular_name %>.<%= attr.name %>.url, :target => '_blank' %></span>
+	<%% end %>
+	<%- end -%>
+   	<%%= f.<%= attr.form_field %> :<%= attr.name %> %>
 </div>
-<div class="field">
-   	<%%= f.label :acronimo %> 
-   	<%%= f.text_field :acronimo %>
-</div>
+<%- end # model.attributes.each -%>
 
-
+<%- @model.associations.each do |assoc| -%>
+<%- next if assoc.skip_views? %>
+<%- if assoc.belongs_to? -%>
 <div class="field">
-	<%%= f.label :pais_id %> 
-	<%%= f.select :pais_id, 
-		  options_for_select( A::Pais.order('nome ASC').collect{ |c| [c.nome, c.id] }, f.object.pais_id ), 
-			:prompt => '-- Select --' %>
+	<%%= f.label :<%= assoc.model2.singular_name.foreign_key %>, t('<%= @model.plural_name %>.edit.<%= assoc.model2.singular_name %>') %> 
+	<%%= f.select :<%= assoc.model2.singular_name.foreign_key %>, 
+		  options_for_select( <%= assoc.model2.klass %>.order('<%= assoc.reference_field %> ASC').collect{ |c| [c.<%= assoc.reference_field %>, c.id] }, f.object.<%= assoc.model2.singular_name.foreign_key %> ), 
+			:prompt => t('<%= @model.plural_name %>.edit.<%= assoc.model2.singular_name %>_select') %>
 </div>
+<%- end # if -%>
+
+<%- if assoc.has_and_belongs_to_many? and assoc.composition? -%>
+<div class="nested">
+	<%%- <%= assoc.model2.klass %>.order('<%= assoc.reference_field %> ASC').each do |<%= assoc.model2.singular_name %>| -%>
+	<div class="checkbox">
+		<%%= check_box_tag '<%= assoc.model2.plural_name %>[]', <%= assoc.model2.singular_name %>.id, (@<%= @model.singular_name %>.<%= assoc.model2.plural_name %>.include?(<%= assoc.model2.singular_name %>) ? true : false) %>
+		<span><%%= <%= assoc.model2.singular_name %>.<%= assoc.reference_field %> %></span>
+	</div>
+	<%%- end -%>
+</div>
+<%- end -%>
+
+<%- if assoc.nested? -%>
+<div class="nested">
+	<%%= f.fields_for :<%= (assoc.nested_many?) ? assoc.model2.plural_name : assoc.model2.singular_name %> do |ff| %>
+		<%%= render '<%= assoc.model2.space %>/<%= assoc.model2.plural_name %>/form_fields', :f => ff %>
+	<%- unless assoc.nested_one? -%>
+		<%%= ff.link_to_remove t('nested.remove') %>
+	<%- end -%>
+	
+	<%% end %>
+	<%- unless assoc.nested_one? -%>
+	<%%= f.link_to_add t('nested.add', :name => '<%= assoc.model2.singular_name %>'), :<%= assoc.model2.plural_name %> %>
+	<%- end -%>
+</div>
+<%- end # if -%>
+
+<%- end # associations loop -%>

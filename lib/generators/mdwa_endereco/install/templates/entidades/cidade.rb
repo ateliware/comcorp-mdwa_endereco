@@ -7,7 +7,8 @@ MDWA::DSL.entities.register "Cidade" do |e|
   e.scaffold_name = 'a/cidade'
   e.model_name = 'a/cidade'
   
-  e.attribute 'nome', 'string'
+  e.attribute 'id', 'integer', {filtered: true}
+  e.attribute 'nome', 'string', {default: true, filtered: true}
   e.attribute 'latitude', 'string'
   e.attribute 'longitude', 'string'
   e.attribute 'populacao', 'integer'
@@ -20,6 +21,10 @@ MDWA::DSL.entities.register "Cidade" do |e|
   e.association do |a|
     a.type = 'many_to_one'
     a.destination = 'Estado' # entity name
+    a.options = {
+      :filtered => true,
+      :filter_field => 'nome'
+    }
   end
   
 end

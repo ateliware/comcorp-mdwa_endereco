@@ -7,8 +7,8 @@ MDWA::DSL.entities.register "Estado" do |e|
   e.scaffold_name = 'a/estado'
   e.model_name = 'a/estado'
 
-  e.attribute 'nome', 'string'
-  e.attribute 'acronimo', 'string'
+  e.attribute 'nome', 'string', {default: true, filtered: true}
+  e.attribute 'acronimo', 'string', {filtered: true}
   
   e.association do |a|
     a.type = 'one_to_many'
