@@ -1,0 +1,81 @@
+# -*- encoding : utf-8 -*-
+<%- 
+@entity = MDWA::DSL.entity('Cidade') 
+@model = @entity.generator_model 
+-%>
+class A::CidadesController < A::BackendController
+
+  load_and_authorize_resource :class => "A::Cidade"
+  
+  # Hook for code generations. Do not delete.
+  #===controller_init===
+
+	def index
+	  @cidades = A::Cidade.paginate :page => params[:page]
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+	end
+
+
+	def show
+    @cidade = A::Cidade.find(params[:id])
+
+    render :layout => false
+	end
+
+	def new
+    @cidade = A::Cidade.new
+
+    render :layout => false
+	end
+
+	def edit
+    @cidade = A::Cidade.find(params[:id])
+
+    render :layout => false
+	end
+
+	def create
+    @cidade = A::Cidade.new(params[:a_cidade])
+    saved_ok = @cidade.save
+    @system_notice = t('cidades.create_success') if saved_ok    
+    load_list # loads all cidades to display in the list
+  
+
+    respond_to do |format|
+      format.js
+    end
+	end
+
+	def update
+    @cidade = A::Cidade.find(params[:id])
+    saved_ok = @cidade.update_attributes(params[:a_cidade])
+    @system_notice = t('cidades.update_success') if saved_ok
+    load_list # loads all cidades to display in the list
+  
+    
+    respond_to do |format|
+      format.js
+    end
+	end
+
+	def destroy
+    @cidade = A::Cidade.find(params[:id])
+    @system_notice = t('cidades.destroy_success') if @cidade.destroy
+    load_list # loads all cidades to display in the list
+    
+    respond_to do |format|
+      format.js
+    end
+	end
+	
+	
+	private
+		def load_list
+			@cidades = A::Cidade.paginate :page => 1
+		end
+
+end
