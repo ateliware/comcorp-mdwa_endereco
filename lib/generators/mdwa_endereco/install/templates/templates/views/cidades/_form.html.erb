@@ -1,11 +1,7 @@
-<%- 
-@entity = MDWA::DSL.entity('Cidade') 
-@model = @entity.generator_model 
--%>
-<%%= <%= 'nested_' if @model.nested_many? %>form_for(<%= @model.to_route_object('@') %><%= ", :remote => true, :html => {:class => :mdwa_ajax #{',:multipart => true' unless @model.attributes.select{|attr| attr.type.to_sym == :file}.count.zero?}}" if @entity.ajax %>) do |f| %>
+<%%= nested_form_for(@cidade, :remote => true, :html => {:class => :mdwa_ajax }) do |f| %>
 
 	<div id="mdwa_error">
-	   	<%%= render '/template/mdwa/crud_error', :object => @<%= @model.singular_name %> %>
+	   	<%%= render '/template/mdwa/crud_error', :object => @cidade %>
 	</div>
 	
 	<div class="yui3-g">
@@ -15,11 +11,7 @@
 	</div>
 
 	<div class="actions">
-		<%- if !@entity.ajax -%>
-		<%%= link_to t('system.cancel_button'), <%= @model.object_name.pluralize %>_path, :class => :cancel %> 
-		<%- else -%>
 		<%%= link_to t('system.cancel_button'), '#', :class => :cancel %> 
-		<%- end -%>
 	    <%%= f.submit t('system.save_button'), :class => :button %>
 	</div>
 

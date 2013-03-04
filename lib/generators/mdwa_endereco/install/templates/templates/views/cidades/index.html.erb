@@ -1,49 +1,38 @@
-<%- 
-@entity = MDWA::DSL.entity('Cidade') 
-@model = @entity.generator_model 
--%>
-<div id="<%= @model.plural_name %>_index" class="mdwa_index">
+<div id="cidades_index" class="mdwa_index">
 	<div class="page_header">
-		<h1><%%= t '<%= @model.plural_name %>.title.index' %></h1>
-		<%- if @entity.ajax -%>
+		<h1><%%= t 'cidades.title.index' %></h1>
 		<div class="page_header_right_tab">
-			<%%= link_to t('<%= @model.plural_name %>.index.add'), new_<%= @model.object_name %>_path, :class => 'lightbox various fancybox.ajax' %>
+			<%%= link_to t('cidades.index.add'), new_a_cidade_path, :class => 'lightbox various fancybox.ajax' %>
 		</div>
-		<%- end -%>
 	</div>
 
 	<div class="inside">
 
 		<div class="topo">
 			<div class="yui3-g">
-				<%%= form_tag <%= @model.object_name.pluralize %>_path, :method => :get, :remote => true, :id => '<%= @model.plural_name %>_filter_form' do %>
+				<%%= form_tag a_cidades_path, :method => :get, :remote => true, :id => 'cidades_filter_form' do %>
 
-				<%- 
-				atributos_com_filtro = @entity.attributes.values.select {|attr| attr.options[:filtered]}
-				associacoes_com_filtro = @entity.associations.values.select {|assoc| assoc.options[:filtered]}
-				-%>
-				<%- if !atributos_com_filtro.count.zero? or !associacoes_com_filtro.count.zero? -%>
-					<%- atributos_com_filtro.each do |atributo| -%>
 						<div class="yui3-u-1-5">
 							<div class="field">
-								<%%= label_tag :<%= atributo.name %>, t('<%= @model.plural_name %>.filtros.<%= atributo.name %>') %>
-								<%- atributo.to_model_attribute.filter_input.each do |input| -%>
-									<%%= <%= input %> %>
-								<%- end -%>
+								<%%= label_tag :id, t('cidades.filtros.id') %>
+									<%%= text_field_tag :id, '', :onkeypress => "mascara(this, checaNumero)", :maxlength => 10 %>
 							</div>
 						</div>
-					<%- end -%>
-
-					<%- associacoes_com_filtro.each do |associacao| -%>
 						<div class="yui3-u-1-5">
 							<div class="field">
-								<%%= label_tag :<%= associacao.name %>, t('<%= @model.plural_name %>.filtros.<%= associacao.name %>') %>
-								<%- associacao.to_model_association.filter_input(associacao.options[:filter_field]).each do |input| -%>
-									<%%= <%= input %> %>
-								<%- end -%>
+								<%%= label_tag :nome, t('cidades.filtros.nome') %>
+									<%%= text_field_tag :nome %>
 							</div>
 						</div>
-					<%- end -%>
+
+						<div class="yui3-u-1-5">
+							<div class="field">
+								<%%= label_tag :estado, t('cidades.filtros.estado') %>
+									<%%= render '/template/mdwa/autocomplete_tag', :dom_element => '#estado', :dom_element_id => '#estado_id', :data => A::Estado.all, :field_name => 'nome' %>
+									<%%= text_field_tag :estado %>
+									<%%= hidden_field_tag :estado_id %>
+							</div>
+						</div>
 
 					<!-- Botão buscar -->
 					<div class="yui3-u-1-5">
@@ -52,13 +41,12 @@
 							<%%= submit_tag t('system.search_button'), :class => :button %>
 						</div>
 					</div>
-				<%- end -%>
 
 				<%% end %>
 			</div>
 		</div>
 
-		<div id="<%= @model.plural_name %>_list">
+		<div id="cidades_list">
 			<%%= render 'list' %>
 		</div>
 	</div>

@@ -1,7 +1,3 @@
-<%- 
-@entity = MDWA::DSL.entity('Endereco') 
-@model = @entity.generator_model 
--%>
 <%%= form_for(@endereco, :remote => true, :html => {:class => :mdwa_ajax}) do |f| %>
 
 	<div id="mdwa_error">
@@ -11,12 +7,12 @@
 	<div class="yui3-g">
 		<div class="yui3-u">
 			<%%= render 'form_fields', :f => f %>
-  	  	</div>
+  	</div>
 	</div>
 
 	<div class="actions">
 		<%%= link_to t('system.cancel_button'), '#', :class => :cancel %> 
-	    <%%= f.submit :class => :button %>
+    <%%= f.submit :class => :button %>
 	</div>
 
 <%% end %>

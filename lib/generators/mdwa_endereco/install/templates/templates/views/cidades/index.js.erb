@@ -1,5 +1,1 @@
-<%- 
-@entity = MDWA::DSL.entity('Cidade') 
-@model = @entity.generator_model 
--%>
-$("#<%= @model.plural_name %>_list").html("<%%= j( render 'list' )%>");
+$("#cidades_list").html("<%%= j( render 'list' )%>");

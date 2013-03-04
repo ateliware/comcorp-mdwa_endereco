@@ -1,21 +1,17 @@
-<%- 
-@entity = MDWA::DSL.entity('Endereco') 
-@model = @entity.generator_model 
--%>
-<% unless @endereco.blank? %>
-  $("#<%= @tipo %>_endereco_attributes_rua").val( "<%= @endereco[0] + " " + @endereco[1] %>" );
-  $("#estado_id").val( "<%= @estado.id %>" );
-  $("#<%= @tipo %>_endereco_attributes_bairro").val( "<%= @endereco[2] %>" );
+<%% unless @endereco.blank? %>
+  $("#<%%= @tipo %>_endereco_attributes_rua").val( "<%%= @endereco[0] + " " + @endereco[1] %>" );
+  $("#estado_id").val( "<%%= @estado.id %>" );
+  $("#<%%= @tipo %>_endereco_attributes_bairro").val( "<%%= @endereco[2] %>" );
   $.ajax({
     url: '/a/enderecos/gerar_combobox_cidade',
     type: 'POST',
     dataType: 'script',
     data: {
-      estado: '<%= @estado.id %>',
-      cidade: '<%= @cidade.id %>',
-      endereco_tipo: '<%= @tipo %>'
+      estado: '<%%= @estado.id %>',
+      cidade: '<%%= @cidade.id %>',
+      endereco_tipo: '<%%= @tipo %>'
     }
   });
-<% end %>
+<%% end %>
 $("div.endereco img").remove();
 

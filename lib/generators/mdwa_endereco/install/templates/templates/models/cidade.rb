@@ -1,20 +1,12 @@
 # -*- encoding : utf-8 -*-
-<%- 
-@entity = MDWA::DSL.entity('Cidade') 
-@model = @entity.generator_model 
--%>
-module A
-	class Cidade < ActiveRecord::Base
 
-	    attr_accessible :nome, :latitude, :longitude, :populacao, :estado, :estado_id
+class A::Cidade < ActiveRecord::Base
 
-	    belongs_to :estado, :class_name => 'A::Estado'
-	    
-	    validates :nome, :estado_id, :presence => true
-	    
-	    def nome_completo
-	      "#{self.nome} - #{self.estado.acronimo.upcase}"
-	    end
-	  
-	end
+    attr_accessible :nome, :latitude, :longitude, :populacao, :estado
+
+  
+    has_many :enderecos, :class_name => 'A::Endereco'
+    belongs_to :estado, :class_name => 'A::Estado'
+    attr_accessible :estado_id
+  
 end

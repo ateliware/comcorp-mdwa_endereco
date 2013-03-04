@@ -1,5 +1,1 @@
-<%- 
-@entity = MDWA::DSL.entity('Estado') 
-@model = @entity.generator_model 
--%>
-$("#<%= @model.plural_name %>_list").html("<%%= j( render 'list' )%>");
+$("#estados_list").html("<%%= j( render 'list' )%>");

@@ -1,6 +1,2 @@
-<%- 
-@entity = MDWA::DSL.entity('Estado') 
-@model = @entity.generator_model 
--%>
-$('#<%= @model.plural_name %>_filter_form').submit();
+$('#estados_filter_form').submit();
 $('body').append("<%%= j( render '/template/mdwa/notice', :notice => @system_notice )%>");
